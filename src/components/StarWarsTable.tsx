@@ -10,6 +10,7 @@ import {
   GridOptions,
   GridReadyEvent,
 } from 'ag-grid-community';
+import StarWarsToolTip from './StarWarsToolTip'
 import '../App.css';
 
 
@@ -25,10 +26,22 @@ const StarWarsTable = () => {
 ]);
 
   const [columnDefs] = useState([
-      { field: 'title' },
-      { field: 'characters' },
-      { field: 'planets' }
+      { headerName: 'Title',      field: 'title' },
+      { headerName: 'Characters', field: 'characters',tooltipField: 'title' },
+      { headerName: 'Planets',    field: 'planets' }
   ])
+
+  const defaultColDef = useMemo<ColDef>(() => {
+    return {
+      editable: true,
+      sortable: true,
+      flex: 1,
+      minWidth: 100,
+      filter: true,
+      resizable: true,
+      tooltipComponent: StarWarsToolTip,
+    };
+  }, []);
 
   const onFirstDataRendered = useCallback((params: FirstDataRenderedEvent) => {
     gridRef.current!.api.sizeColumnsToFit();
@@ -72,7 +85,11 @@ const StarWarsTable = () => {
               ref={gridRef}
               rowData={rowData}
               columnDefs={columnDefs}
+              defaultColDef={defaultColDef}
+              tooltipShowDelay={1}
+             
               onFirstDataRendered={onFirstDataRendered}
+     
               >
           </AgGridReact>
       </div>
