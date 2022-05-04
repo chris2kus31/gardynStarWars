@@ -19,9 +19,9 @@ const StarWarsTable = () => {
   const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
   const gridStyle = useMemo(() => ({ height: 600, width: 800 }), []);
   const [rowData] = useState([
-    {make: "Toyota", model: "Celica", price: 35000},
-    {make: "Ford", model: "Mondeo", price: 32000},
-    {make: "Porsche", model: "Boxster", price: 72000}
+    {title: "A New Hope",           characters: 3, planets: 3},
+    {title: "The Phantom Menace",   characters: 3, planets: 3},
+    {title: "Return of the Jedi",   characters: 3, planets: 3}
 ]);
 
   const [columnDefs] = useState([
@@ -29,9 +29,11 @@ const StarWarsTable = () => {
       { field: 'characters' },
       { field: 'planets' }
   ])
+
   const onFirstDataRendered = useCallback((params: FirstDataRenderedEvent) => {
     gridRef.current!.api.sizeColumnsToFit();
   }, []);
+
   // const [rowData, setRowData] = useState();
   // const [columnDefs, setColumnDefs] = useState([
   //   {
