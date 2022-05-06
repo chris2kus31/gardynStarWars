@@ -12,7 +12,7 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import { ColDef, FirstDataRenderedEvent } from "ag-grid-community";
 import StarWarsToolTip from "./StarWarsToolTip";
 import TableHeaderComponent from "./TableHeaderComponent";
-import { Button } from "antd";
+import { Card } from "antd";
 import { data } from "./data";
 import "../App.css";
 
@@ -95,7 +95,7 @@ const StarWarsTable = () => {
           tooltipShowDelay={1}
           onFirstDataRendered={onFirstDataRendered}
           overlayNoRowsTemplate={
-            '<span style="padding: 10px; border: 2px solid #444; background: lightgoldenrodyellow">Click Button to Begin</span>'
+            '<Card style="padding: 10px; border: 2px solid #444; ">Click button to begin</Card>'
           }
         ></AgGridReact>
       </div>
