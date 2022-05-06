@@ -12,18 +12,23 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import { ColDef, FirstDataRenderedEvent } from "ag-grid-community";
 import StarWarsToolTip from "./StarWarsToolTip";
 import TableHeaderComponent from "./TableHeaderComponent";
-import { Button} from "antd";
+import { Button } from "antd";
 import { data } from "./data";
 import "../App.css";
 
 const StarWarsTable = () => {
+  const p = data
   const gridRef = useRef<AgGridReact>(null);
   const gridStyle = useMemo(() => ({ height: 600, width: 800 }), []);
-  const [rowData] = useState(data);
+  const [rowData, setRowData] = useState([]);
 
   const [columnDefs] = useState([
     { headerName: "Title", field: "title" },
-    { headerName: "Characters", field: "characters.count", tooltipField: "characters" },
+    {
+      headerName: "Characters",
+      field: "characters.count",
+      tooltipField: "characters",
+    },
     { headerName: "Planets", field: "planets.count", tooltipField: "planets" },
   ]);
 
@@ -41,6 +46,10 @@ const StarWarsTable = () => {
   const onFirstDataRendered = useCallback((params: FirstDataRenderedEvent) => {
     gridRef.current!.api.sizeColumnsToFit();
   }, []);
+
+  const handleTableData = (p:any) => {
+    setRowData(p);
+  };
 
   useEffect(() => {
     const endpoint = "https://parseapi.back4app.com/graphql";
@@ -76,7 +85,7 @@ const StarWarsTable = () => {
 
   return (
     <div className="center">
-       <TableHeaderComponent onClick={() => console.log('clicking')} />
+      <TableHeaderComponent onClick={() => handleTableData(p)} />
       <div className="ag-theme-alpine" style={gridStyle}>
         <AgGridReact
           ref={gridRef}
@@ -85,6 +94,9 @@ const StarWarsTable = () => {
           defaultColDef={defaultColDef}
           tooltipShowDelay={1}
           onFirstDataRendered={onFirstDataRendered}
+          overlayNoRowsTemplate={
+            '<span style="padding: 10px; border: 2px solid #444; background: lightgoldenrodyellow">Click Button to Begin</span>'
+          }
         ></AgGridReact>
       </div>
     </div>
