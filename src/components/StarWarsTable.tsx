@@ -11,6 +11,8 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import { ColDef, FirstDataRenderedEvent } from "ag-grid-community";
 import StarWarsToolTip from "./StarWarsToolTip";
+import TableHeaderComponent from "./TableHeaderComponent";
+import { Button} from "antd";
 import { data } from "./data";
 import "../App.css";
 
@@ -73,7 +75,8 @@ const StarWarsTable = () => {
   }, []);
 
   return (
-    <div style={{zIndex: 1}} className="center">
+    <div className="center">
+       <TableHeaderComponent />
       <div className="ag-theme-alpine" style={gridStyle}>
         <AgGridReact
           ref={gridRef}
