@@ -89,9 +89,7 @@ const StarWarsTable = () => {
           defaultColDef={defaultColDef}
           tooltipShowDelay={1}
           onFirstDataRendered={onFirstDataRendered}
-          overlayNoRowsTemplate={
-            '<Card style="padding: 10px; border: 2px solid #444; ">Click button to begin</Card>'
-          }
+          overlayNoRowsTemplate={'<Card style="padding: 10px; border: 2px solid #444; ">Click button to begin</Card>'}
         ></AgGridReact>
       </div>
     </div>
