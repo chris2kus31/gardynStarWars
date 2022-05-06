@@ -12,16 +12,15 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import { ColDef, FirstDataRenderedEvent } from "ag-grid-community";
 import StarWarsToolTip from "./StarWarsToolTip";
 import TableHeaderComponent from "./TableHeaderComponent";
-import { Card } from "antd";
+import { Card, Avatar } from "antd";
 import { data } from "./data";
 import "../App.css";
 
 const StarWarsTable = () => {
-  const p = data
+  const tableData = data
   const gridRef = useRef<AgGridReact>(null);
   const gridStyle = useMemo(() => ({ height: 600, width: 800 }), []);
   const [rowData, setRowData] = useState([]);
-
   const [columnDefs] = useState([
     { headerName: "Title", field: "title" },
     {
@@ -31,14 +30,8 @@ const StarWarsTable = () => {
     },
     { headerName: "Planets", field: "planets.count", tooltipField: "planets" },
   ]);
-
   const defaultColDef = useMemo<ColDef>(() => {
     return {
-      editable: true,
-      sortable: true,
-      filter: true,
-      resizable: true,
-      zIndez: 999999999,
       tooltipComponent: StarWarsToolTip,
     };
   }, []);
@@ -83,9 +76,11 @@ const StarWarsTable = () => {
     // fetchData();
   }, []);
 
+  const { Meta } = Card;
+
   return (
     <div className="center">
-      <TableHeaderComponent onClick={() => handleTableData(p)} />
+      <TableHeaderComponent onClick={() => handleTableData(tableData)} />
       <div className="ag-theme-alpine" style={gridStyle}>
         <AgGridReact
           ref={gridRef}
