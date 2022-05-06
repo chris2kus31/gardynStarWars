@@ -16,7 +16,7 @@ import "../App.css";
 
 const StarWarsTable = () => {
   const gridRef = useRef<AgGridReact>(null);
-  const gridStyle = useMemo(() => ({ height: 800, width: 800 }), []);
+  const gridStyle = useMemo(() => ({ height: 600, width: 800 }), []);
   const [rowData] = useState(data);
 
   const [columnDefs] = useState([
@@ -29,10 +29,9 @@ const StarWarsTable = () => {
     return {
       editable: true,
       sortable: true,
-      flex: 1,
-      minWidth: 100,
       filter: true,
       resizable: true,
+      zIndez: 999999999,
       tooltipComponent: StarWarsToolTip,
     };
   }, []);
@@ -74,7 +73,7 @@ const StarWarsTable = () => {
   }, []);
 
   return (
-    <div className="center">
+    <div style={{zIndex: 1}} className="center">
       <div className="ag-theme-alpine" style={gridStyle}>
         <AgGridReact
           ref={gridRef}

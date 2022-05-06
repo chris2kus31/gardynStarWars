@@ -41,7 +41,7 @@
   width: 150px;
   height: 70px;
   border: 1px solid cornflowerblue;
-  overflow: hidden;
+  z-index: 999999999 !important;
 }
 
 .custom-tooltip p {
