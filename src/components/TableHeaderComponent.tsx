@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Card} from "antd";
-import { DownloadOutlined } from '@ant-design/icons';
+import { ReloadOutlined } from '@ant-design/icons';
 import "../App.css";
 
 export interface TableHeaderComponentProps{
@@ -13,7 +13,7 @@ const TableHeaderComponent = (props: TableHeaderComponentProps ) => {
         <>
             <div style={{display: "flex", justifyContent: "space-between"}}>
                 <h1 >Star Wars</h1>
-                <Button {...props}  >Click To Begin</Button>
+                <Button {...props} icon={<ReloadOutlined />} >Click To Begin</Button>
             </div>
              
         </>
