@@ -15,7 +15,6 @@ import "../App.css";
 
 const StarWarsTable = () => {
   const gridRef = useRef<AgGridReact>(null);
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
   const gridStyle = useMemo(() => ({ height: 600, width: 800 }), []);
   const [rowData] = useState([
     { title: "A New Hope", characters: 3, planets: 3 },
@@ -26,7 +25,7 @@ const StarWarsTable = () => {
   const [columnDefs] = useState([
     { headerName: "Title", field: "title" },
     { headerName: "Characters", field: "characters", tooltipField: "title" },
-    { headerName: "Planets", field: "planets" },
+    { headerName: "Planets", field: "planets", tooltipField: "title" },
   ]);
 
   const defaultColDef = useMemo<ColDef>(() => {
@@ -45,36 +44,6 @@ const StarWarsTable = () => {
     gridRef.current!.api.sizeColumnsToFit();
   }, []);
 
-  // const [rowData, setRowData] = useState();
-  // const [columnDefs, setColumnDefs] = useState([
-  //   {
-  //     field: 'athlete',
-  //     minWidth: 150,
-  //     tooltipField: 'athlete',
-  //     tooltipComponentParams: { color: '#ececec' },
-  //   },
-  //   { field: 'country', minWidth: 130, tooltipField: 'country' },
-  //   { field: 'Planets', minWidth: 130, tooltipField: 'country' }
-  // ]);
-  // const defaultColDef = useMemo(() => {
-  //   return {
-  //     editable: true,
-  //     sortable: true,
-  //     flex: 1,
-  //     minWidth: 100,
-  //     filter: true,
-  //     resizable: true,
-  //     tooltipComponent: CustomTooltip,
-  //   };
-  // }, []);
-
-  // const onGridReady = useCallback(() => {
-  //   fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-  //     .then((resp) => resp.json())
-  //     .then((data) => {
-  //       setRowData(data);
-  //     });
-  // }, []);
 
   useEffect(() => {
     const endpoint = "https://parseapi.back4app.com/graphql";
