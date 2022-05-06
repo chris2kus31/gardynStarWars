@@ -2,13 +2,17 @@ import React from 'react';
 import { Button} from "antd";
 import "../App.css";
 
-const TableHeaderComponent = () => {
+export interface TableHeaderComponentProps{
+   onClick: () => void;
+}
+
+const TableHeaderComponent = (props: TableHeaderComponentProps ) => {
 
     return (
         <>
             <div style={{display: "flex", justifyContent: "space-between"}}>
                 <h1 >Star Wars</h1>
-                <Button>Click To Begin</Button>
+                <Button {...props}>Click To Begin</Button>
             </div>
              
         </>

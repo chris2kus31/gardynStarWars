@@ -76,7 +76,7 @@ const StarWarsTable = () => {
 
   return (
     <div className="center">
-       <TableHeaderComponent />
+       <TableHeaderComponent onClick={() => console.log('clicking')} />
       <div className="ag-theme-alpine" style={gridStyle}>
         <AgGridReact
           ref={gridRef}
