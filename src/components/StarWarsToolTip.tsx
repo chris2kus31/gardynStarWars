@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { List, Avatar } from 'antd';
+import ReactTooltip from 'react-tooltip';
 import { ITooltipParams } from 'ag-grid-community';
 import '../App.css';
 
@@ -19,7 +20,7 @@ const StarWarsToolTip = (props: ITooltipParams & { color: string }) => {
         },
       ];
     return (
-        <div className="custom-tooltip" style={{ backgroundColor: props.color || 'white', height: '100%' }}>
+        <div className="custom-tooltip" style={{ backgroundColor: props.color || 'white', height: '100%', overflowY: 'auto' }}>
             <p>
                 <span>Characters in Movie</span>
             </p>
