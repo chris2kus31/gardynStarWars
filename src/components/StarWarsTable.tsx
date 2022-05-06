@@ -9,23 +9,20 @@ import { AgGridReact } from "ag-grid-react";
 import axios from "axios";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import {ColDef,FirstDataRenderedEvent} from "ag-grid-community";
+import { ColDef, FirstDataRenderedEvent } from "ag-grid-community";
 import StarWarsToolTip from "./StarWarsToolTip";
+import { data } from "./data";
 import "../App.css";
 
 const StarWarsTable = () => {
   const gridRef = useRef<AgGridReact>(null);
-  const gridStyle = useMemo(() => ({ height: 600, width: 800 }), []);
-  const [rowData] = useState([
-    { title: "A New Hope", characters: 3, planets: 3 },
-    { title: "The Phantom Menace", characters: 3, planets: 3 },
-    { title: "Return of the Jedi", characters: 3, planets: 3 },
-  ]);
+  const gridStyle = useMemo(() => ({ height: 800, width: 800 }), []);
+  const [rowData] = useState(data);
 
   const [columnDefs] = useState([
     { headerName: "Title", field: "title" },
-    { headerName: "Characters", field: "characters", tooltipField: "title" },
-    { headerName: "Planets", field: "planets", tooltipField: "title" },
+    { headerName: "Characters", field: "characters.count", tooltipField: "characters" },
+    { headerName: "Planets", field: "planets.count", tooltipField: "planets" },
   ]);
 
   const defaultColDef = useMemo<ColDef>(() => {
@@ -44,14 +41,13 @@ const StarWarsTable = () => {
     gridRef.current!.api.sizeColumnsToFit();
   }, []);
 
-
   useEffect(() => {
     const endpoint = "https://parseapi.back4app.com/graphql";
     const graphqlQuery = {
-      "operationName": "allFilms",
-      "query": `query { roles { results { title }}}`,
-      "variables": {}
-  };
+      operationName: "allFilms",
+      query: `query { roles { results { title }}}`,
+      variables: {},
+    };
     const fetchData = async () => {
       const result = await axios({
         url: endpoint,
@@ -69,12 +65,12 @@ const StarWarsTable = () => {
                   }
                 }
               }
-            `
-        }
+            `,
+        },
       });
     };
 
-    fetchData();
+    // fetchData();
   }, []);
 
   return (
