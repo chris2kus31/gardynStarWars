@@ -9,14 +9,7 @@ import { AgGridReact } from "ag-grid-react";
 import axios from "axios";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import {
-  ColDef,
-  ColGroupDef,
-  FirstDataRenderedEvent,
-  Grid,
-  GridOptions,
-  GridReadyEvent,
-} from "ag-grid-community";
+import {ColDef,FirstDataRenderedEvent} from "ag-grid-community";
 import StarWarsToolTip from "./StarWarsToolTip";
 import "../App.css";
 
