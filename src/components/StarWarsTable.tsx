@@ -4,6 +4,7 @@ import { ColDef } from "ag-grid-community";
 import StarWarsToolTip from "./StarWarsToolTip";
 import TableHeaderComponent from "../component-library/TableHeaderComponent";
 import TableComponent from "../component-library/TableComponent";
+import ButtonComponent from "../component-library/ButtonComponent";
 import { ReloadOutlined } from "@ant-design/icons";
 import { data } from "./data";
 import useTableHandleData from "./hooks/useTableHandleData";
@@ -60,13 +61,14 @@ const StarWarsTable = () => {
 
   return (
     <div className="center">
-      <TableHeaderComponent
-        styles={{ display: "flex", justifyContent: "space-between" }}
-        headerTitle="Star Wars"
-        onClick={() => handleTableData(tableData)}
-        buttonIcon={<ReloadOutlined />}
-        buttonName="Click To Load Data"
-      />
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <TableHeaderComponent headerTitle="Star Wars" />
+        <ButtonComponent
+          buttonName="Click to Load data"
+          buttonIcon={<ReloadOutlined />}
+          onClick={() => handleTableData(tableData)}
+        ></ButtonComponent>
+      </div>
       <TableComponent
         rowData={rowData}
         columnDefs={columnDefs}
