@@ -42,13 +42,7 @@ const StarWarsTable = () => {
   }, []);
 
   const handleTableData = (p:any) => {
-    setLoad(true)
-    try {
-      setRowData(p);
-      setLoad(false) 
-    } catch (e) {
-      setLoad(false)
-    }
+    setRowData(p);
   };
 
 
