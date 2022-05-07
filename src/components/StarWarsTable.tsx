@@ -1,16 +1,13 @@
 import {
   useCallback,
   useMemo,
-  useRef,
   useState,
 } from "react";
-import { AgGridReact } from "ag-grid-react";
 import axios from "axios";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { ColDef, FirstDataRenderedEvent } from "ag-grid-community";
+import { ColDef} from "ag-grid-community";
 import StarWarsToolTip from "./StarWarsToolTip";
 import TableHeaderComponent from "./TableHeaderComponent";
+import TableComponent from "./TableComponent";
 import { ReloadOutlined } from '@ant-design/icons';
 import { data } from "./data";
 import useTableHandleData from "./hooks/useTableHandleData";
@@ -28,16 +25,10 @@ const StarWarsTable = () => {
     },
     { headerName: "Planets", field: "planets.count", tooltipField: "planets" },
   ]);
-  const gridRef = useRef<AgGridReact>(null);
-  const gridStyle = useMemo(() => ({ height: 600, width: 800 }), []);
   const defaultColDef = useMemo<ColDef>(() => {
     return {
       tooltipComponent: StarWarsToolTip,
     };
-  }, []);
-
-  const onFirstDataRendered = useCallback((params: FirstDataRenderedEvent) => {
-    gridRef.current!.api.sizeColumnsToFit();
   }, []);
 
   const fetchData = useCallback(() => {
@@ -79,19 +70,15 @@ const StarWarsTable = () => {
         onClick={() => handleTableData(tableData)}
         buttonIcon={<ReloadOutlined />}
       />
-      <div className="ag-theme-alpine" style={gridStyle}>
-        <AgGridReact
-          ref={gridRef}
+        <TableComponent
           rowData={rowData}
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
           tooltipShowDelay={1}
-          onFirstDataRendered={onFirstDataRendered}
           overlayNoRowsTemplate={
             '<Card style="padding: 10px; border: 2px solid #444; background: #FFE81F ">Click button to begin</Card>'
           }
-        ></AgGridReact>
-      </div>
+        />
     </div>
   );
 };
