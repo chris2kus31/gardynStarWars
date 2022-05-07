@@ -21,7 +21,7 @@ const StarWarsTable = () => {
   const gridRef = useRef<AgGridReact>(null);
   const gridStyle = useMemo(() => ({ height: 600, width: 800 }), []);
   const [rowData, setRowData] = useState([]);
-  const [columnDefs] = useState([
+  const [columnDefs] = useState<ColDef[]>([
     { headerName: "Title", field: "title" },
     {
       headerName: "Characters",
@@ -51,7 +51,8 @@ const StarWarsTable = () => {
     }
   };
 
-  useEffect(() => {
+
+  const fetchData = useCallback( () => {
     const endpoint = "https://parseapi.back4app.com/graphql";
     const graphqlQuery = {
       operationName: "allFilms",
@@ -79,11 +80,8 @@ const StarWarsTable = () => {
         },
       });
     };
-
-    // fetchData();
-  }, []);
-
-  const { Meta } = Card;
+    fetchData();
+  },[])
 
   return (
     <div className="center">

@@ -3,7 +3,11 @@ import { Tag, Card } from "antd";
 import { ITooltipParams } from "ag-grid-community";
 import "../App.css";
 
-const StarWarsToolTip = (props: ITooltipParams & { color: string }) => {
+type ToolTipProps = {
+    colorTag: string
+}
+
+const StarWarsToolTip = (props: ITooltipParams & ToolTipProps) => {
 
   const toolTipData = useMemo( () => props.value.results,[props.value.results] ) 
 
