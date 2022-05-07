@@ -62,7 +62,7 @@ const StarWarsTable = () => {
   return (
     <div className="center">
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <TableHeaderComponent headerTitle="Star Wars" />
+        <TableHeaderComponent avatarImage="/images/deathStar.png" headerTitle="Star Wars" />
         <ButtonComponent
           styles={{background: '#6B8FBA', color: 'white'}}
           buttonName="Click to Load data"
