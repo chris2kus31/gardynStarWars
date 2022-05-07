@@ -67,7 +67,7 @@ const StarWarsTable = () => {
           buttonName="Click to Load data"
           buttonIcon={<ReloadOutlined />}
           onClick={() => handleTableData(tableData)}
-        ></ButtonComponent>
+        />
       </div>
       <TableComponent
         rowData={rowData}
