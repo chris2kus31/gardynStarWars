@@ -64,6 +64,7 @@ const StarWarsTable = () => {
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <TableHeaderComponent headerTitle="Star Wars" />
         <ButtonComponent
+          styles={{background: '#6B8FBA', color: 'white'}}
           buttonName="Click to Load data"
           buttonIcon={<ReloadOutlined />}
           onClick={() => handleTableData(tableData)}
