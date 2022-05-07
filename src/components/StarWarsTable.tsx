@@ -14,13 +14,15 @@ const StarWarsTable = () => {
   const tableData = data;
   const { rowData, handleTableData } = useTableHandleData();
   const [columnDefs] = useState<ColDef[]>([
-    { headerName: "Title", field: "title" },
+    { headerName: "Title", field: "title", sortable: true, filter: 'agStringColumnFilter' },
     {
       headerName: "Characters",
       field: "characters.count",
       tooltipField: "characters",
+      sortable: true,
+      filter: 'agNumberColumnFilter'
     },
-    { headerName: "Planets", field: "planets.count", tooltipField: "planets" },
+    { headerName: "Planets", field: "planets.count", tooltipField: "planets", filter: 'agNumberColumnFilter' },
   ]);
   const defaultColDef = useMemo<ColDef>(() => {
     return {
