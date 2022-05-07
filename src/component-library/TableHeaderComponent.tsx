@@ -3,7 +3,7 @@ import { Button } from "antd";
 import ButtonComponent from "./ButtonComponent";
 import "../App.css";
 
-type TableHeaderComponentProps = {
+interface TableHeaderComponentProps  {
   headerTitle: string;
   styles?: React.CSSProperties;
 };

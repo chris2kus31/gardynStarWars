@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "antd";
 
-type ButtonComponentProps = {
+interface ButtonComponentProps  {
   onClick: () => void;
   loading?: boolean;
   styles?: React.CSSProperties;
