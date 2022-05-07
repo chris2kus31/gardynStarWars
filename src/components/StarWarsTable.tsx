@@ -39,7 +39,7 @@ const StarWarsTable = () => {
       variables: {},
     };
     const fetchData = async () => {
-      const result = await axios({
+       await axios({
         url: endpoint,
         method: "post",
         headers: {
