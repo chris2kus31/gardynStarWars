@@ -17,7 +17,7 @@ import { data } from "./data";
 import "../App.css";
 
 const StarWarsTable = () => {
-  const tableData = data
+  const tableData = data;
   const gridRef = useRef<AgGridReact>(null);
   const gridStyle = useMemo(() => ({ height: 600, width: 800 }), []);
   const [rowData, setRowData] = useState([]);
@@ -40,12 +40,11 @@ const StarWarsTable = () => {
     gridRef.current!.api.sizeColumnsToFit();
   }, []);
 
-  const handleTableData = (p:any) => {
+  const handleTableData = (p: any) => {
     setRowData(p);
   };
 
-
-  const fetchData = useCallback( () => {
+  const fetchData = useCallback(() => {
     const endpoint = "https://parseapi.back4app.com/graphql";
     const graphqlQuery = {
       operationName: "allFilms",
@@ -74,11 +73,15 @@ const StarWarsTable = () => {
       });
     };
     fetchData();
-  },[])
+  }, []);
 
   return (
     <div className="center">
-      <TableHeaderComponent onClick={() => handleTableData(tableData)} />
+      <TableHeaderComponent
+        styles={{ display: "flex", justifyContent: "space-between" }}
+        headerTitle="Star Wars"
+        onClick={() => handleTableData(tableData)}
+      />
       <div className="ag-theme-alpine" style={gridStyle}>
         <AgGridReact
           ref={gridRef}
@@ -87,7 +90,9 @@ const StarWarsTable = () => {
           defaultColDef={defaultColDef}
           tooltipShowDelay={1}
           onFirstDataRendered={onFirstDataRendered}
-          overlayNoRowsTemplate={'<Card style="padding: 10px; border: 2px solid #444; background: #FFE81F ">Click button to begin</Card>'}
+          overlayNoRowsTemplate={
+            '<Card style="padding: 10px; border: 2px solid #444; background: #FFE81F ">Click button to begin</Card>'
+          }
         ></AgGridReact>
       </div>
     </div>
