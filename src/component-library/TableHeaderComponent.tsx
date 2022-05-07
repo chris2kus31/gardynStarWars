@@ -8,6 +8,7 @@ type TableHeaderComponentProps = {
   headerTitle: string;
   styles?: React.CSSProperties;
   buttonIcon: JSX.Element;
+  buttonName: string;
 };
 
 const TableHeaderComponent = ({
@@ -16,12 +17,13 @@ const TableHeaderComponent = ({
   headerTitle,
   styles,
   buttonIcon,
+  buttonName
 }: TableHeaderComponentProps) => {
   return (
     <div style={styles}>
       <h1>{headerTitle}</h1>
       <Button onClick={onClick} icon={buttonIcon}>
-        Click To Begin
+       {buttonName}
       </Button>
     </div>
   );

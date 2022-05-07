@@ -65,6 +65,7 @@ const StarWarsTable = () => {
         headerTitle="Star Wars"
         onClick={() => handleTableData(tableData)}
         buttonIcon={<ReloadOutlined />}
+        buttonName="Click To Load Data"
       />
       <TableComponent
         rowData={rowData}
@@ -72,7 +73,7 @@ const StarWarsTable = () => {
         defaultColDef={defaultColDef}
         tooltipShowDelay={1}
         overlayNoRowsTemplate={
-          '<Card style="padding: 10px; border: 2px solid #444; background: #FFE81F ">Click button to begin</Card>'
+          '<Card style="padding: 10px; border: 2px solid #444; background: #FFE81F ">Load Data to Begin</Card>'
         }
       />
     </div>
