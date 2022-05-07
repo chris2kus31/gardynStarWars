@@ -3,7 +3,7 @@ import { Button, Card} from "antd";
 import { ReloadOutlined } from '@ant-design/icons';
 import "../App.css";
 
-export interface TableHeaderComponentProps{
+type TableHeaderComponentProps = {
    onClick: () => void;
    loading?: boolean;
 }
