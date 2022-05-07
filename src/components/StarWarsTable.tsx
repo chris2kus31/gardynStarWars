@@ -67,7 +67,7 @@ const StarWarsTable = () => {
         <TableHeaderComponent avatarImage="/images/deathStar.png" headerTitle="Star Wars" />
         <ButtonComponent
           styles={{background: '#6B8FBA', color: 'white'}}
-          buttonName="Click to Load data"
+          buttonName="Load Now"
           buttonIcon={<ReloadOutlined />}
           onClick={() => handleTableData(tableData)}
         />
