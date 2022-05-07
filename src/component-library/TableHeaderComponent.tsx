@@ -17,13 +17,13 @@ const TableHeaderComponent = ({
   headerTitle,
   styles,
   buttonIcon,
-  buttonName
+  buttonName,
 }: TableHeaderComponentProps) => {
   return (
     <div style={styles}>
       <h1>{headerTitle}</h1>
       <Button onClick={onClick} icon={buttonIcon}>
-       {buttonName}
+        {buttonName}
       </Button>
     </div>
   );
