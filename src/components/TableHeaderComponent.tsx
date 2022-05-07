@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Card} from "antd";
-import { ReloadOutlined } from '@ant-design/icons';
+import { Button } from "antd";
 import "../App.css";
 
 type TableHeaderComponentProps = {
