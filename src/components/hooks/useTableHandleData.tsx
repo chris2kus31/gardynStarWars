@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
 
 const useTableHandleData = () => {
   const [rowData, setRowData] = useState([]);
@@ -9,6 +8,6 @@ const useTableHandleData = () => {
   };
 
   return { rowData, handleTableData };
-}; 
+};
 
 export default useTableHandleData;
