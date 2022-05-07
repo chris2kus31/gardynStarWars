@@ -6,13 +6,12 @@ import "../App.css";
 const StarWarsToolTip = (props: ITooltipParams & { color: string }) => {
 
   const d = useMemo( () => props.value.results,[props.value.results] ) 
+
   return (
       <Card headStyle={{backgroundColor: '#C7CED4'}} title={props.colDef?.headerName}  style={{width: '50%',backgroundColor: '#FFE81F'}}>
-        {d.map( (item:any) => {
-           return (
-               <Tag color="black" key={item.id}>{item.name}</Tag>
-           )
-        } )}
+        {d.map( (item:any) => 
+        <Tag color="black" key={item.id}>{item.name}</Tag> 
+        )}
       </Card>
   );
 };
