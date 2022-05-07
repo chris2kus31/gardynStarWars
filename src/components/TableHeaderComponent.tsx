@@ -13,14 +13,10 @@ type TableHeaderComponentProps = {
 const TableHeaderComponent = ({loading, onClick, headerTitle, styles}: TableHeaderComponentProps ) => {
 
     return (
-        <>
             <div style={styles}>
                 <h1>{headerTitle}</h1>
                 <Button onClick={onClick} icon={<ReloadOutlined />} >Click To Begin</Button>
             </div>
-             
-        </>
-      
     )
 }
 
