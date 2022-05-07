@@ -1,21 +1,17 @@
-import {
-  useCallback,
-  useMemo,
-  useState,
-} from "react";
+import { useCallback, useMemo, useState } from "react";
 import axios from "axios";
-import { ColDef} from "ag-grid-community";
+import { ColDef } from "ag-grid-community";
 import StarWarsToolTip from "./StarWarsToolTip";
 import TableHeaderComponent from "./TableHeaderComponent";
 import TableComponent from "./TableComponent";
-import { ReloadOutlined } from '@ant-design/icons';
+import { ReloadOutlined } from "@ant-design/icons";
 import { data } from "./data";
 import useTableHandleData from "./hooks/useTableHandleData";
 import "../App.css";
 
 const StarWarsTable = () => {
   const tableData = data;
-  const {rowData, handleTableData} = useTableHandleData()
+  const { rowData, handleTableData } = useTableHandleData();
   const [columnDefs] = useState<ColDef[]>([
     { headerName: "Title", field: "title" },
     {
@@ -39,7 +35,7 @@ const StarWarsTable = () => {
       variables: {},
     };
     const fetchData = async () => {
-       await axios({
+      await axios({
         url: endpoint,
         method: "post",
         headers: {
@@ -70,15 +66,15 @@ const StarWarsTable = () => {
         onClick={() => handleTableData(tableData)}
         buttonIcon={<ReloadOutlined />}
       />
-        <TableComponent
-          rowData={rowData}
-          columnDefs={columnDefs}
-          defaultColDef={defaultColDef}
-          tooltipShowDelay={1}
-          overlayNoRowsTemplate={
-            '<Card style="padding: 10px; border: 2px solid #444; background: #FFE81F ">Click button to begin</Card>'
-          }
-        />
+      <TableComponent
+        rowData={rowData}
+        columnDefs={columnDefs}
+        defaultColDef={defaultColDef}
+        tooltipShowDelay={1}
+        overlayNoRowsTemplate={
+          '<Card style="padding: 10px; border: 2px solid #444; background: #FFE81F ">Click button to begin</Card>'
+        }
+      />
     </div>
   );
 };
