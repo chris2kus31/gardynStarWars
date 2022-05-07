@@ -13,13 +13,12 @@ import StarWarsToolTip from "./StarWarsToolTip";
 import TableHeaderComponent from "./TableHeaderComponent";
 import { ReloadOutlined } from '@ant-design/icons';
 import { data } from "./data";
+import useTableHandleData from "./hooks/useTableHandleData";
 import "../App.css";
 
 const StarWarsTable = () => {
   const tableData = data;
-  const gridRef = useRef<AgGridReact>(null);
-  const gridStyle = useMemo(() => ({ height: 600, width: 800 }), []);
-  const [rowData, setRowData] = useState([]);
+  const {rowData, handleTableData} = useTableHandleData()
   const [columnDefs] = useState<ColDef[]>([
     { headerName: "Title", field: "title" },
     {
@@ -29,6 +28,8 @@ const StarWarsTable = () => {
     },
     { headerName: "Planets", field: "planets.count", tooltipField: "planets" },
   ]);
+  const gridRef = useRef<AgGridReact>(null);
+  const gridStyle = useMemo(() => ({ height: 600, width: 800 }), []);
   const defaultColDef = useMemo<ColDef>(() => {
     return {
       tooltipComponent: StarWarsToolTip,
@@ -38,10 +39,6 @@ const StarWarsTable = () => {
   const onFirstDataRendered = useCallback((params: FirstDataRenderedEvent) => {
     gridRef.current!.api.sizeColumnsToFit();
   }, []);
-
-  const handleTableData = (p: any) => {
-    setRowData(p);
-  };
 
   const fetchData = useCallback(() => {
     const endpoint = "https://parseapi.back4app.com/graphql";
