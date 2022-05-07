@@ -1,6 +1,5 @@
 import React, {
   useCallback,
-  useEffect,
   useMemo,
   useRef,
   useState,
@@ -12,7 +11,7 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import { ColDef, FirstDataRenderedEvent } from "ag-grid-community";
 import StarWarsToolTip from "./StarWarsToolTip";
 import TableHeaderComponent from "./TableHeaderComponent";
-import { Card, Avatar } from "antd";
+import { ReloadOutlined } from '@ant-design/icons';
 import { data } from "./data";
 import "../App.css";
 
@@ -81,6 +80,7 @@ const StarWarsTable = () => {
         styles={{ display: "flex", justifyContent: "space-between" }}
         headerTitle="Star Wars"
         onClick={() => handleTableData(tableData)}
+        buttonIcon={<ReloadOutlined />}
       />
       <div className="ag-theme-alpine" style={gridStyle}>
         <AgGridReact

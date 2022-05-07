@@ -8,14 +8,15 @@ type TableHeaderComponentProps = {
    loading?: boolean;
    headerTitle: string;
    styles?: React.CSSProperties;
+   buttonIcon: JSX.Element
 }
 
-const TableHeaderComponent = ({loading, onClick, headerTitle, styles}: TableHeaderComponentProps ) => {
+const TableHeaderComponent = ({loading, onClick, headerTitle, styles, buttonIcon}: TableHeaderComponentProps ) => {
 
     return (
             <div style={styles}>
                 <h1>{headerTitle}</h1>
-                <Button onClick={onClick} icon={<ReloadOutlined />} >Click To Begin</Button>
+                <Button onClick={onClick} icon={buttonIcon} >Click To Begin</Button>
             </div>
     )
 }
