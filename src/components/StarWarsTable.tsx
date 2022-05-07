@@ -1,5 +1,5 @@
-import { useCallback, useMemo, useState } from "react";
-import axios from "axios";
+import { useMemo, useState } from "react";
+// import axios from "axios";
 import { ColDef } from "ag-grid-community";
 import StarWarsToolTip from "./StarWarsToolTip";
 import TableHeaderComponent from "../component-library/TableHeaderComponent";
@@ -28,36 +28,36 @@ const StarWarsTable = () => {
     };
   }, []);
 
-  const fetchData = useCallback(() => {
-    const endpoint = "https://parseapi.back4app.com/graphql";
-    const graphqlQuery = {
-      operationName: "allFilms",
-      query: `query { roles { results { title }}}`,
-      variables: {},
-    };
-    const fetchData = async () => {
-      await axios({
-        url: endpoint,
-        method: "post",
-        headers: {
-          "X-Parse-Application-Id": "Gu4eZ1GBh5ir9m3PjUR5qx8HsIvlPF4lVQ3lP1ZC", // This is your app's application id
-          "X-Parse-REST-API-Key": "Ojj5bteBQ9CLY5kQuQyocHsosk8IjsHyglXGRpz6", // This is your app's REST API key
-        },
-        data: {
-          query: `
-            query {
-              films {
-                    results {
-                      title
-                  }
-                }
-              }
-            `,
-        },
-      });
-    };
-    fetchData();
-  }, []);
+  // const fetchData = useCallback(() => {
+  //   const endpoint = "https://parseapi.back4app.com/graphql";
+  //   const graphqlQuery = {
+  //     operationName: "allFilms",
+  //     query: `query { roles { results { title }}}`,
+  //     variables: {},
+  //   };
+  //   const fetchData = async () => {
+  //     await axios({
+  //       url: endpoint,
+  //       method: "post",
+  //       headers: {
+  //         "X-Parse-Application-Id": "Gu4eZ1GBh5ir9m3PjUR5qx8HsIvlPF4lVQ3lP1ZC", // This is your app's application id
+  //         "X-Parse-REST-API-Key": "Ojj5bteBQ9CLY5kQuQyocHsosk8IjsHyglXGRpz6", // This is your app's REST API key
+  //       },
+  //       data: {
+  //         query: `
+  //           query {
+  //             films {
+  //                   results {
+  //                     title
+  //                 }
+  //               }
+  //             }
+  //           `,
+  //       },
+  //     });
+  //   };
+  //   fetchData();
+  // }, []);
 
   return (
     <div className="center">
