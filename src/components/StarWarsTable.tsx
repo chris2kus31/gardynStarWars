@@ -30,7 +30,6 @@ const StarWarsTable = () => {
     },
     { headerName: "Planets", field: "planets.count", tooltipField: "planets" },
   ]);
-  const [load, setLoad] = useState(false);
   const defaultColDef = useMemo<ColDef>(() => {
     return {
       tooltipComponent: StarWarsToolTip,
@@ -79,7 +78,7 @@ const StarWarsTable = () => {
 
   return (
     <div className="center">
-      <TableHeaderComponent loading={load} onClick={() => handleTableData(tableData)} />
+      <TableHeaderComponent onClick={() => handleTableData(tableData)} />
       <div className="ag-theme-alpine" style={gridStyle}>
         <AgGridReact
           ref={gridRef}

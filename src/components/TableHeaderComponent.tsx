@@ -5,7 +5,7 @@ import "../App.css";
 
 export interface TableHeaderComponentProps{
    onClick: () => void;
-   loading: boolean;
+   loading?: boolean;
 }
 
 const TableHeaderComponent = (props: TableHeaderComponentProps ) => {
